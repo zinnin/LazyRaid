@@ -17,19 +17,11 @@
 mono_crash.*
 
 # Build results
-LazyRaid/[Dd]ebug/
-LazyRaid/[Dd]ebugPublic/
-LazyRaid/[Rr]elease/
-LazyRaid/[Rr]eleases/
-LazyRaid/x64/
-LazyRaid/x86/
-LazyRaid/[Aa][Rr][Mm]/
-LazyRaid/[Aa][Rr][Mm]64/
 LazyRaid/bld/
-LazyRaid/[Bb]in/
-LazyRaid/[Oo]bj/
-LazyRaid/[Ll]og/
-LazyRaid/[Ll]ogs/
+LazyRaid/bin/
+LazyRaid/obj/
+LazyRaid/log/
+LazyRaid/logs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
