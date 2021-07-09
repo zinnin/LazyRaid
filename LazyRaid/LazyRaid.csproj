@@ -57,7 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="LazyRaid\Models\Boss.cs" />
     <Compile Include="LazyRaid\Models\BossAbility.cs" />
+    <Compile Include="LazyRaid\Models\BossEvent.cs" />
     <Compile Include="LazyRaid\Models\BossSchedule.cs" />
+    <Compile Include="LazyRaid\Models\BossTime.cs" />
     <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
     <Compile Include="LazyRaid\Models\Raid.cs" />
     <Compile Include="LazyRaid\Models\Specialization.cs" />
