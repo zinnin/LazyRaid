@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LazyRaid\Models\Boss.cs" />
+    <Compile Include="LazyRaid\Models\BossAbility.cs" />
+    <Compile Include="LazyRaid\Models\BossSchedule.cs" />
+    <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
+    <Compile Include="LazyRaid\Models\Raid.cs" />
+    <Compile Include="LazyRaid\Models\Specialization.cs" />
     <Compile Include="WindowCore\kWindow.cs" />
     <Compile Include="WindowCore\kWIndowStructure.cs" />
     <Page Include="LazyRaid\Windows\LazyRaid.xaml">
@@ -105,7 +111,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LazyRaid\Models\" />
     <Folder Include="LazyRaid\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
