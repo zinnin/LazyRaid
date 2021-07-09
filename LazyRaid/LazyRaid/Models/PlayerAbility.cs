@@ -1,6 +1,8 @@
 ﻿namespace LazyRaid.Models
 {
-    class PlayerAbility
+    public class PlayerAbility
     {
+        public string Name { get; set; }
+        public int Cooldown { get; set; }
     }
 }

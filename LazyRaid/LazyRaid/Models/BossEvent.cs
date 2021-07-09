@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 
 namespace LazyRaid.Models
 {
-    class BossEvent
+    public class BossEvent
     {
-        
+        public BossTime Timestamp { get; set; }
+        public BossAbility Ability { get; set; }
+        public ObservableCollection<PlayerAbility> Cooldowns { get; set; }
+        public string Note { get; set; }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace LazyRaid.Models
 {
-    class Raid
+    public class Raid
     {
         public string Name { get; set; }
-        public ObservableCollection<Specialization> Specialization { get; set; }
+        public ObservableCollection<Player> Players { get; set; }
     }
 }

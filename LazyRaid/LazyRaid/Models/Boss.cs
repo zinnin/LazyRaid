@@ -2,7 +2,7 @@
 
 namespace LazyRaid.Models
 {
-    class Boss
+    public class Boss
     {
         public string Name { get; set; }
         public ObservableCollection<BossAbility> Abilities { get; set; } 

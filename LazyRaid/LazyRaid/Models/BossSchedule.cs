@@ -1,7 +1,9 @@
-﻿namespace LazyRaid.Models
+﻿using System.Collections.ObjectModel;
+
+namespace LazyRaid.Models
 {
-    class BossSchedule
+    public class BossSchedule
     {
-        
+        public ObservableCollection<BossEvent> Events { get; set; }
     }
 }
