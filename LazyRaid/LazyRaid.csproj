@@ -7,110 +7,13 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="DataClasses\**" />
+    <EmbeddedResource Remove="DataClasses\**" />
+    <None Remove="DataClasses\**" />
+    <Page Remove="DataClasses\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
-    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.8.1.97\lib\net461\Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net461\Prism.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="LazyRaid\Extensions\LazyRaidExtensions.cs" />
-    <Compile Include="LazyRaid\Models\BossSchedulerSettings.cs" />
-    <Compile Include="LazyRaid\Models\CounterAbilityUserPriority.cs" />
-    <Compile Include="LazyRaid\Models\CounterRequirements.cs" />
-    <Compile Include="LazyRaid\Models\Instance.cs" />
-    <Compile Include="LazyRaid\Models\IAbilityCounter.cs" />
-    <Compile Include="LazyRaid\Models\Boss.cs" />
-    <Compile Include="LazyRaid\Models\BossAbility.cs" />
-    <Compile Include="LazyRaid\Models\BossEvent.cs" />
-    <Compile Include="LazyRaid\Models\BossTime.cs" />
-    <Compile Include="LazyRaid\Models\Player.cs" />
-    <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
-    <Compile Include="LazyRaid\Models\Raid.cs" />
-    <Compile Include="LazyRaid\Models\Specialization.cs" />
-    <Compile Include="LazyRaid\Models\UserData.cs" />
-    <Compile Include="LazyRaid\ViewModels\LazyRaid_VM.cs" />
-    <Compile Include="WindowCore\kWindow.cs" />
-    <Compile Include="WindowCore\kWIndowStructure.cs" />
-    <Page Include="LazyRaid\DataTemplates\LazyRaidTemplates.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LazyRaid\Windows\LazyRaid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LazyRaid\Windows\LazyRaid.xaml.cs">
-      <DependentUpon>LazyRaid.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Style\Brushes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Style\Stylesheet_Core.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Style\Stylesheet_LazyRaid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataClasses\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\Windowing\Close.png" />
