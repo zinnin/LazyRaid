@@ -41,6 +41,7 @@
         }
 
         public new string ToString => $"{Minutes}:{Seconds}";
+        public int ToInt => (Minutes * 60) + Seconds;
 
         public bool Equals(BossTime bossTime)
         {

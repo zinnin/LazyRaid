@@ -13,7 +13,15 @@ namespace LazyRaid
 {
     class LazyRaid_VM : BindableBase
     {
-        public UserData UserData { get; set; }
+        private UserData _userData;
+        public UserData UserData
+        {
+            get => _userData;
+            set => SetProperty(ref _userData, value);
+        }
+
+        public DelegateCommand RunAutoSchedularCmd { get; private set; }
+
         public LazyRaid_VM()
         {
             CreateCommands();
@@ -21,7 +29,7 @@ namespace LazyRaid
 
         private void CreateCommands()
         {
-
+            RunAutoSchedularCmd = new DelegateCommand(async () => await RunAutoScheduler());
         }
 
         private Task AutoSchedulerTask { get; set; }
@@ -34,7 +42,7 @@ namespace LazyRaid
             if (AutoSchedulerTask == null || AutoSchedulerTask.IsCompleted)
             {
                 AutoSchedulerTask = Task.Run(AutoSchedule);
-                await AutoSchedulerTask;
+                await AutoSchedulerTask;     
             }
         }
 
