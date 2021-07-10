@@ -35,6 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net461\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net461\Prism.Wpf.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
     <Compile Include="LazyRaid\Models\Raid.cs" />
     <Compile Include="LazyRaid\Models\Specialization.cs" />
+    <Compile Include="LazyRaid\ViewModels\LazyRaid_VM.cs" />
     <Compile Include="LazyRaid\ViewModels\Scheduler.cs" />
     <Compile Include="WindowCore\kWindow.cs" />
     <Compile Include="WindowCore\kWIndowStructure.cs" />
