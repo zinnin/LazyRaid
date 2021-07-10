@@ -2,7 +2,7 @@
 
 namespace LazyRaid.Models
 {
-    public class Raid
+    public class Group : BindableReferenceBase
     {
         public string Name { get; set; }
         public OC<Player> Players { get; set; }

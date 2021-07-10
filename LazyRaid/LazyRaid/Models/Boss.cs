@@ -2,7 +2,7 @@
 
 namespace LazyRaid.Models
 {
-    public class Boss
+    public class Boss : BindableReferenceBase
     {
         public string Name { get; set; }
         public OC<BossAbility> Abilities { get; set; } = new OC<BossAbility>();

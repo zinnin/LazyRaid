@@ -2,12 +2,12 @@
 
 namespace LazyRaid.Models
 {
-    public class PlayerAbility
+    public class PlayerAbility : BindableReferenceBase
     {
         public string Name { get; set; }
         public int Cooldown { get; set; }
 
-        public OC<IAbilityCounter> Counters { get; set; }
+        public OC<Counter> Counters { get; set; }
 
         public bool IsCounter(BossAbility bossAbility)
         {

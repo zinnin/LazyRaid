@@ -44,7 +44,41 @@ namespace LazyRaid
 
         private void CreateCommands()
         {
+            //Implemented Functionality
+
+            //Un-Implemented Functionality
             RunAutoSchedularCmd = new DelegateCommand(async () => await RunAutoScheduler());
+
+            //ToDo Functionality
+
+            
+            //// Raid Editor
+            ////// Player Editor
+            //////// Spec Editor
+                    // Spec Exporter
+                      // Multi-Select?
+                    // Spec Importer
+            ///////// Player Ability Editor
+            
+
+            //// Instance Editor
+                // Instance Export 
+                // Instance Import
+                // Instance Selection
+                // Instance Create
+                // Instance Delete
+            ///// Boss Editor
+                  // Boss Export?
+                  // Boss Import?
+
+            ////// Boss Ability Editor
+
+            //// Counter Requirements Editor
+            
+
+            
+
+
         }
 
         private void TestTemplates()
@@ -75,8 +109,8 @@ namespace LazyRaid
 
         private void AutoSchedule()
         {
-            UserData.Boss.Events.Sort((a, b) => { return a.Timestamp.CompareTo(b.Timestamp); });
-            foreach (BossEvent bossEvent in UserData.Boss.Events)
+            UserData.UserSelections.SelectedBoss.Events.Sort((a, b) => { return a.Timestamp.CompareTo(b.Timestamp); });
+            foreach (BossEvent bossEvent in UserData.UserSelections.SelectedBoss.Events)
             {
 
             }
@@ -84,7 +118,7 @@ namespace LazyRaid
 
         public void Load(Boss boss)
         {
-            UserData.Boss = boss;
+            UserData.UserSelections.SelectedBoss = boss;
         }
 
         public void NewAbility(string abilityName)
@@ -96,17 +130,17 @@ namespace LazyRaid
                     Name = abilityName,
                 };
 
-                UserData.Boss.Abilities.Add(bossAbility);
-                UserData.Boss.AbilityPriorities.Add(bossAbility, new OC<CounterAbilityUserPriority>());
+                UserData.UserSelections.SelectedBoss.Abilities.Add(bossAbility);
+                UserData.UserSelections.SelectedBoss.AbilityPriorities.Add(bossAbility, new OC<CounterAbilityUserPriority>());
             }
         }
 
         public void RemoveAbility(BossAbility ability)
         {
-            if (BossLoaded() && UserData.Boss.Abilities.Contains(ability))
+            if (BossLoaded() && UserData.UserSelections.SelectedBoss.Abilities.Contains(ability))
             {
-                UserData.Boss.Abilities.Remove(ability);
-                UserData.Boss.AbilityPriorities.Remove(ability);
+                UserData.UserSelections.SelectedBoss.Abilities.Remove(ability);
+                UserData.UserSelections.SelectedBoss.AbilityPriorities.Remove(ability);
             }
         }
 
@@ -114,7 +148,7 @@ namespace LazyRaid
         {
             if (BossLoaded())
             {
-                foreach (KeyValuePair<BossAbility, OC<CounterAbilityUserPriority>> abilityPriorityDefinition in UserData.Boss.AbilityPriorities)
+                foreach (KeyValuePair<BossAbility, OC<CounterAbilityUserPriority>> abilityPriorityDefinition in UserData.UserSelections.SelectedBoss.AbilityPriorities)
                 {
 
                 }
@@ -125,7 +159,7 @@ namespace LazyRaid
         {
             OC<PlayerAbility> abilityCounters = new OC<PlayerAbility>();
 
-            foreach (Player player in UserData.Raid.Players)
+            foreach (Player player in UserData.UserSelections.SelectedGroup.Players)
             {
                 if (player.CurrentSpecialization != null)
                 {
@@ -144,7 +178,7 @@ namespace LazyRaid
 
         private bool BossLoaded()
         {
-            return (UserData.Boss != null);
+            return (UserData.UserSelections.SelectedBoss != null);
         }
     }
 }

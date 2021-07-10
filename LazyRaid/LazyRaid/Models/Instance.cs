@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LazyRaid.Models
 {
-    class Instance
+    public class Instance : BindableReferenceBase
     {
         OC<Boss> Bosses { get; set; } = new OC<Boss>();
     }
