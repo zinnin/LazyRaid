@@ -76,21 +76,12 @@ namespace LazyRaid
             //// Counter Requirements Editor
             
 
-            
-
-
+           
         }
 
         private void TestTemplates()
         {
-            UserData.Bosses = new OC<Boss>();
-            UserData.Bosses.Add(new Boss { Name = "Kel'Thuzad" });
-            UserData.Bosses.Add(new Boss { Name = "Sylvanas" });
-            UserData.Bosses.Add(new Boss { Name = "Painthruster LongNameGuy" });
 
-            BossAbilityTemp.Add(new BossAbility { Name = "Big AoE" });
-            BossAbilityTemp.Add(new BossAbility { Name = "FUck the raid" });
-            BossAbilityTemp.Add(new BossAbility { Name = "Smacks the tank" });
         }
 
         private Task AutoSchedulerTask { get; set; }
