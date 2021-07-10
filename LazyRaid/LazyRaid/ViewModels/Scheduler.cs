@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace LazyRaid.Models
@@ -13,15 +9,8 @@ namespace LazyRaid.Models
         public Raid Raid { get; set; }
 
         private Task AutoSchedulerTask { get; set; }
-        //public bool ScheduleInReverse
-        //{
-        //    get;
-        //    set
-        //    {
-
-        //    }
-        //}
         public BossTime FirstPassScheduleTimeStamp { get; set; } = new BossTime();
+        public bool ReverseAutoSchedulers { get; set; }
         public BossSchedulerSettings Settings { get; set; }
 
         public async Task RunAutoScheduler()
