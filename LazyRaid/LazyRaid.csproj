@@ -80,6 +80,10 @@
     <Compile Include="LazyRaid\ViewModels\Scheduler.cs" />
     <Compile Include="WindowCore\kWindow.cs" />
     <Compile Include="WindowCore\kWIndowStructure.cs" />
+    <Page Include="LazyRaid\DataTemplates\LazyRaidTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LazyRaid\Windows\LazyRaid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
