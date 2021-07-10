@@ -6,11 +6,14 @@
         xmlns:local="clr-namespace:LazyRaid"
         xmlns:kwin="clr-namespace:kWindows.Core"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="750" Width="925"
         Style="{StaticResource BaseWindow}">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="8, 4, 8, 8" />
     </WindowChrome.WindowChrome>
+    <kwin:kWindow.DataContext>
+        <local:LazyRaid_VM />
+    </kwin:kWindow.DataContext>
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Top" Height="30" Background="{StaticResource BG_Titlebar}" MouseDown="EnableDrag">
@@ -28,8 +31,36 @@
                     </Button>
                 </StackPanel>
             </Grid>
+            
             <Grid DockPanel.Dock="Bottom">
-                <Label FontSize="58" Content="LazyRaid" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" Foreground="#2c2c2c" FontWeight="Light"/>
+                <DockPanel>
+                    <Border BorderBrush="Yellow" BorderThickness="1" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+                        <Grid Height="40">
+                            <ListView ItemTemplate="{StaticResource BossItemTemplate}" ItemsSource="{Binding Bosses, UpdateSourceTrigger=PropertyChanged}" 
+                                      SelectedItem="{Binding SelectedBoss, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      HorizontalAlignment="Stretch" Background="{StaticResource BG_Toolbar2}">
+
+                            </ListView>
+                        </Grid>
+                    </Border>
+                    <Border BorderBrush="Green" BorderThickness="1" DockPanel.Dock="Top">
+                        <Grid Height="50">
+                            <Label Content="Raid" />
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="Red" BorderThickness="1" DockPanel.Dock="Left">
+                        <Grid Width="400">
+                            <Label Content="Boss Shit"/>
+                        </Grid>
+                    </Border>
+
+                    <Border BorderBrush="Blue" BorderThickness="1" DockPanel.Dock="Right" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Label Content="Timeline" />
+                        </Grid>
+                    </Border>
+                </DockPanel>
             </Grid>
         </DockPanel>
     </Grid>

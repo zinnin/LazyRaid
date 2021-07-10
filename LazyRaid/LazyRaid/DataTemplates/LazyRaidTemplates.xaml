@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LazyRaid"
+                    xmlns:models="clr-namespace:LazyRaid.Models">
+    
+    <DataTemplate x:Key="BossItemTemplate" DataType="{x:Type models:Boss}">
+        <Grid Height="40" Width="150" Background="{StaticResource BG_Button}">
+            <Label Content="{Binding Path=Name}" Margin="10, 0, 10, 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource FG_Component}"/>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
