@@ -13,11 +13,25 @@ namespace LazyRaid
 {
     class LazyRaid_VM : BindableBase
     {
-        private UserData _userData;
+        private UserData _userData = new UserData();
         public UserData UserData
         {
             get => _userData;
             set => SetProperty(ref _userData, value);
+        }
+
+        private Boss _selectedBoss;
+        public Boss SelectedBoss
+        {
+            get => _selectedBoss;
+            set => SetProperty(ref _selectedBoss, value);
+        }
+
+        private OC<BossAbility> _bossAbilityTemp = new OC<BossAbility>();
+        public OC<BossAbility> BossAbilityTemp
+        {
+            get => _bossAbilityTemp;
+            set => SetProperty(ref _bossAbilityTemp, value);
         }
 
         public DelegateCommand RunAutoSchedularCmd { get; private set; }
@@ -25,11 +39,24 @@ namespace LazyRaid
         public LazyRaid_VM()
         {
             CreateCommands();
+            TestTemplates();
         }
 
         private void CreateCommands()
         {
             RunAutoSchedularCmd = new DelegateCommand(async () => await RunAutoScheduler());
+        }
+
+        private void TestTemplates()
+        {
+            UserData.Bosses = new OC<Boss>();
+            UserData.Bosses.Add(new Boss { Name = "Kel'Thuzad" });
+            UserData.Bosses.Add(new Boss { Name = "Sylvanas" });
+            UserData.Bosses.Add(new Boss { Name = "Painthruster LongNameGuy" });
+
+            BossAbilityTemp.Add(new BossAbility { Name = "Big AoE" });
+            BossAbilityTemp.Add(new BossAbility { Name = "FUck the raid" });
+            BossAbilityTemp.Add(new BossAbility { Name = "Smacks the tank" });
         }
 
         private Task AutoSchedulerTask { get; set; }
@@ -58,7 +85,6 @@ namespace LazyRaid
         public void Load(Boss boss)
         {
             UserData.Boss = boss;
-
         }
 
         public void NewAbility(string abilityName)

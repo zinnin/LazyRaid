@@ -7,6 +7,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Style/Brushes.xaml" />
                 <ResourceDictionary Source="Style/Stylesheet_Core.xaml" />
+                <ResourceDictionary Source="Style/Stylesheet_LazyRaid.xaml" />
                 <ResourceDictionary Source="LazyRaid/DataTemplates/LazyRaidTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -9,11 +9,13 @@ namespace LazyRaid.Models
 {
     public class UserData : BindableBase
     {
-        private Boss _boss;
-        public Boss Boss
+        public Boss Boss;
+
+        private OC<Boss> _bosses;
+        public OC<Boss> Bosses
         {
-            get => _boss;
-            set => SetProperty(ref _boss, value);
+            get => _bosses;
+            set => SetProperty(ref _bosses, value);
         }
         public Raid Raid { get; set; }
     }

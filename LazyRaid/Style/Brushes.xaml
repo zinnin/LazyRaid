@@ -23,6 +23,10 @@
     <SolidColorBrush x:Key="Combobox_MouseOverItem" Color="#2D3C48" />
     <SolidColorBrush x:Key="Combobox_SelectedItem" Color="#5E8CCC" />
 
+    <SolidColorBrush x:Key="ListViewItem_SelectedItem" Color="#6495ED" />
+    <SolidColorBrush x:Key="ListViewItem_SelectedItem_MouseOver" Color="#8495ED" />
+
+
     <SolidColorBrush x:Key="BG_Menu" Color="#1C1C1C" />
     <SolidColorBrush x:Key="BG_Menu_Selected" Color="#666666" />
 
@@ -49,5 +53,8 @@
     <SolidColorBrush x:Key="FG_Toolbar" Color="#F0F0F0" />
     <SolidColorBrush x:Key="FG_Orange" Color="#CCE8AE50" />
     <SolidColorBrush x:Key="FG_Purple" Color="#CCBF50E8" />
+    <SolidColorBrush x:Key="FG_Green" Color="#00DD00" />
+
+
 
 </ResourceDictionary>

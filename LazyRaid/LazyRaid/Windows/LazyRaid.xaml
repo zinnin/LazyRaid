@@ -34,13 +34,34 @@
             
             <Grid DockPanel.Dock="Bottom">
                 <DockPanel>
-                    <Border BorderBrush="Yellow" BorderThickness="1" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
-                        <Grid Height="40">
-                            <ListView ItemTemplate="{StaticResource BossItemTemplate}" ItemsSource="{Binding Bosses, UpdateSourceTrigger=PropertyChanged}" 
-                                      SelectedItem="{Binding SelectedBoss, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                      HorizontalAlignment="Stretch" Background="{StaticResource BG_Toolbar2}">
-
-                            </ListView>
+                    <Border BorderBrush="Yellow" BorderThickness="0" DockPanel.Dock="Bottom" HorizontalAlignment="Stretch">
+                        <Grid Height="55">
+                            <DockPanel>
+                                <Grid DockPanel.Dock="Left" Width="30" VerticalAlignment="Stretch" Background="Blue">
+                                    <Button HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="55">
+                                        <Button.Content>
+                                            <Grid>
+                                                <Label Content="&#xE710;" FontFamily="Segoe MDL2 Assets" FontSize="16" Height="50" Style="{StaticResource ButtonLabel}" />
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                                <Grid DockPanel.Dock="Right">
+                                    <ListView ItemTemplate="{StaticResource BossItemTemplate}" ItemsSource="{Binding UserData.Bosses, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding SelectedBoss, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                              HorizontalAlignment="Stretch" Background="{StaticResource BG_Toolbar2}" VerticalAlignment="Center" BorderThickness="0"
+                                              ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem" BasedOn="{StaticResource BossListViewItem}" />
+                                        </ListView.ItemContainerStyle>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
+                                </Grid>
+                            </DockPanel>
                         </Grid>
                     </Border>
                     <Border BorderBrush="Green" BorderThickness="1" DockPanel.Dock="Top">
@@ -51,7 +72,13 @@
 
                     <Border BorderBrush="Red" BorderThickness="1" DockPanel.Dock="Left">
                         <Grid Width="400">
-                            <Label Content="Boss Shit"/>
+                            <StackPanel>
+                                <ListBox ItemTemplate="{StaticResource BossAbilityTemplate}" ItemsSource="{Binding BossAbilityTemp, UpdateSourceTrigger=PropertyChanged}" 
+                                                  HorizontalAlignment="Stretch" Background="{StaticResource BG_Toolbar2}" VerticalAlignment="Top" BorderThickness="0" 
+                                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" Style="{StaticResource ListBoxBossAbility}">
+                                </ListBox>
+                                <Button Content="Add New Boss Spell" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="35" FontSize="16"/>
+                            </StackPanel>
                         </Grid>
                     </Border>
 
