@@ -76,8 +76,8 @@
     <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
     <Compile Include="LazyRaid\Models\Raid.cs" />
     <Compile Include="LazyRaid\Models\Specialization.cs" />
+    <Compile Include="LazyRaid\Models\UserData.cs" />
     <Compile Include="LazyRaid\ViewModels\LazyRaid_VM.cs" />
-    <Compile Include="LazyRaid\ViewModels\Scheduler.cs" />
     <Compile Include="WindowCore\kWindow.cs" />
     <Compile Include="WindowCore\kWIndowStructure.cs" />
     <Page Include="LazyRaid\DataTemplates\LazyRaidTemplates.xaml">
