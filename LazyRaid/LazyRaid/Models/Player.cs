@@ -3,6 +3,7 @@
     public class Player
     {
         public string Name { get; set; }
-        public Specialization Spec { get; set; }
+        public Specialization CurrentSpecialization { get; set; }
+        public OC<Specialization> AvailableSpecializations { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace LazyRaid.Models
         public string Name { get; set; }
         public int Count { get; set; }
         public ImageSource Icon { get; set; }
-        public ObservableCollection<PlayerAbility> Abilities { get; set; }
+        public OC<PlayerAbility> Abilities { get; set; } = new OC<PlayerAbility>();
     }
 }

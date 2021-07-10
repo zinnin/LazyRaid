@@ -34,22 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationFramework.Aero" />
-    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.8.1.97\lib\net461\Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net461\Prism.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,22 +55,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LazyRaid\Extensions\LazyRaidExtensions.cs" />
+    <Compile Include="LazyRaid\Models\BossSchedulerSettings.cs" />
+    <Compile Include="LazyRaid\Models\CounterAbilityUserPriority.cs" />
+    <Compile Include="LazyRaid\Models\CounterRequirements.cs" />
+    <Compile Include="LazyRaid\Models\Instance.cs" />
+    <Compile Include="LazyRaid\Models\IAbilityCounter.cs" />
     <Compile Include="LazyRaid\Models\Boss.cs" />
     <Compile Include="LazyRaid\Models\BossAbility.cs" />
     <Compile Include="LazyRaid\Models\BossEvent.cs" />
-    <Compile Include="LazyRaid\Models\BossSchedule.cs" />
     <Compile Include="LazyRaid\Models\BossTime.cs" />
     <Compile Include="LazyRaid\Models\Player.cs" />
     <Compile Include="LazyRaid\Models\PlayerAbility.cs" />
     <Compile Include="LazyRaid\Models\Raid.cs" />
     <Compile Include="LazyRaid\Models\Specialization.cs" />
-    <Compile Include="LazyRaid\ViewModels\LazyRaid_VM.cs" />
+    <Compile Include="LazyRaid\ViewModels\Scheduler.cs" />
     <Compile Include="WindowCore\kWindow.cs" />
     <Compile Include="WindowCore\kWIndowStructure.cs" />
-    <Page Include="LazyRaid\DataTemplates\LazyRaidTemplates.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LazyRaid\Windows\LazyRaid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,7 +111,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,7 +119,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataClasses\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\Windowing\Close.png" />
     <Resource Include="Resources\Icons\Windowing\Minimize.png" />
