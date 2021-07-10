@@ -1,6 +1,6 @@
 ﻿namespace LazyRaid.Models
 {
-    public class Player
+    public class Player : BindableReferenceBase
     {
         public string Name { get; set; }
         public Specialization CurrentSpecialization { get; set; }
