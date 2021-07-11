@@ -5,7 +5,7 @@ namespace LazyRaid.Models
     public class BossAbility : BindableReferenceBase
     {
         public string Name { get; set; }
-        public OC<CounterRequirements> CounterRequirements { get; set; } = new OC<CounterRequirements>();
+        public OCReference<CounterRequirements> CounterRequirements { get; set; } = new OCReference<CounterRequirements>();
         public OCReference<Player> PlayerBlacklist { get; set; } = new OCReference<Player>();
         public OCReference<PlayerAbility> PlayerAbilityBlacklist { get; set; } = new OCReference<PlayerAbility>();
         public OCReference<PlayerAbilityPlayerBlacklistCombo> PlayerAbilityPlayerComboBlackList = new OCReference<PlayerAbilityPlayerBlacklistCombo>();
