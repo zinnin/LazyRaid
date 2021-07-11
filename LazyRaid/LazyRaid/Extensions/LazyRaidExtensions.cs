@@ -26,14 +26,41 @@ namespace LazyRaid
         }
     }
 
-    public class SerializeAsGUIDAttribute : Attribute { }
-    public class SerializeReferenceClassAttribute : Attribute { }
+    public class SerializeAsGuidListAttribute : Attribute { }
+
+    public class SerializeAsGuidAttribute : Attribute { }
 
     public class OC<T> : ObservableCollection<T>
     {
         public new void Add(T objectToadd)
         {
             ((ObservableCollection<T>)this).Add(objectToadd);
+        }
+    }
+
+    [SerializeAsGuid]
+    public class Reference<T> where T: BindableReferenceBase
+    {
+        T obj;
+
+        public Reference(T objToSerializeAsRef = null)
+        {
+            obj = objToSerializeAsRef;
+        }
+
+        public T GetSelection()
+        {
+            return obj;
+        }
+
+        public void SetSelection(T objectToSet)
+        {
+            obj = objectToSet;
+        }
+
+        public override string ToString()
+        {
+            return obj.ID.ToString();
         }
     }
 
@@ -54,8 +81,36 @@ namespace LazyRaid
 
         public T GetValue(Guid ID)
         {
-            return lookupDictionary[ID];
+            if (!lookupDictionary.ContainsKey(ID))
+            {
+                Reindex();
+            }
+
+            if (lookupDictionary.ContainsKey(ID))
+            {
+                return lookupDictionary[ID];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void Reindex()
+        {
+            foreach (T obj in this)
+            {
+                if (!lookupDictionary.ContainsKey(obj.ID))
+                {
+                    lookupDictionary.Add(obj.ID, obj);
+                }
+            }
         }
     }
 
+    [SerializeAsGuidList]
+    public class OCReference<T> : OC<T> where T : BindableReferenceBase 
+    {
+        
+    }    
 }

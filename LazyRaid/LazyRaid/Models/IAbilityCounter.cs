@@ -18,7 +18,7 @@
             PlayerAbility newAbility = new PlayerAbility
             {
                 Name = "DivineShield",
-                Counters = new OC<Counter>
+                Counters = new OCReference<Counter>
                 {
                     new Counter
                     {

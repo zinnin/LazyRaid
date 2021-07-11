@@ -8,13 +8,10 @@ namespace LazyRaid.Models
 {
     public class UserSelections
     {
-        [SerializeAsGUID]
-        public Instance SelectedInstance { get; set; }
-        [SerializeAsGUID]
-        public Boss SelectedBoss { get; set; }
-        [SerializeAsGUID]
-        public BossEvent SelectedEvent { get; set; }
-        [SerializeAsGUID]
-        public Group SelectedGroup { get; set; }
+        //public Reference<Instance> SelectedInstance { get; set; } = new Reference<Instance>();
+        //public Reference<Boss> SelectedBoss { get; set; } = new Reference<Boss>();
+        //public Reference<BossEvent> SelectedEvent { get; set; } = new Reference<BossEvent>();
+        //public Reference<Group> SelectedGroup { get; set; } = new Reference<Group>();
+        public Reference<Counter> SelectedCounter { get; set; } = new Reference<Counter>();
     }
 }

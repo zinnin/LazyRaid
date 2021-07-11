@@ -100,16 +100,16 @@ namespace LazyRaid
 
         private void AutoSchedule()
         {
-            UserData.UserSelections.SelectedBoss.Events.Sort((a, b) => { return a.Timestamp.CompareTo(b.Timestamp); });
-            foreach (BossEvent bossEvent in UserData.UserSelections.SelectedBoss.Events)
-            {
+            //UserData.UserSelections.SelectedBoss.GetSelection().Events.Sort((a, b) => { return a.Timestamp.CompareTo(b.Timestamp); });
+            //foreach (BossEvent bossEvent in UserData.UserSelections.SelectedBoss.GetSelection().Events)
+            //{
 
-            }
+            //}
         }
 
         public void Load(Boss boss)
         {
-            UserData.UserSelections.SelectedBoss = boss;
+            //UserData.UserSelections.SelectedBoss.SetSelection(boss);
         }
 
         public void NewAbility(string abilityName)
@@ -121,28 +121,28 @@ namespace LazyRaid
                     Name = abilityName,
                 };
 
-                UserData.UserSelections.SelectedBoss.Abilities.Add(bossAbility);
-                UserData.UserSelections.SelectedBoss.AbilityPriorities.Add(bossAbility, new OC<CounterAbilityUserPriority>());
+                //UserData.UserSelections.SelectedBoss.GetSelection().Abilities.Add(bossAbility);
+                //UserData.UserSelections.SelectedBoss.GetSelection().AbilityPriorities.Add(bossAbility, new OC<CounterAbilityUserPriority>());
             }
         }
 
         public void RemoveAbility(BossAbility ability)
         {
-            if (BossLoaded() && UserData.UserSelections.SelectedBoss.Abilities.Contains(ability))
-            {
-                UserData.UserSelections.SelectedBoss.Abilities.Remove(ability);
-                UserData.UserSelections.SelectedBoss.AbilityPriorities.Remove(ability);
-            }
+            //if (BossLoaded() && UserData.UserSelections.SelectedBoss.GetSelection().Abilities.Contains(ability))
+            //{
+            //    UserData.UserSelections.SelectedBoss.GetSelection().Abilities.Remove(ability);
+            //    UserData.UserSelections.SelectedBoss.GetSelection().AbilityPriorities.Remove(ability);
+            //}
         }
 
         private void EnforceAbilityPriorityDefinitons()
         {
             if (BossLoaded())
             {
-                foreach (KeyValuePair<BossAbility, OC<CounterAbilityUserPriority>> abilityPriorityDefinition in UserData.UserSelections.SelectedBoss.AbilityPriorities)
-                {
+                //foreach (KeyValuePair<BossAbility, OC<CounterAbilityUserPriority>> abilityPriorityDefinition in UserData.UserSelections.SelectedBoss.GetSelection().AbilityPriorities)
+                //{
 
-                }
+                //}
             }
         }
 
@@ -150,26 +150,26 @@ namespace LazyRaid
         {
             OC<PlayerAbility> abilityCounters = new OC<PlayerAbility>();
 
-            foreach (Player player in UserData.UserSelections.SelectedGroup.Players)
-            {
-                if (player.CurrentSpecialization != null)
-                {
-                    foreach (PlayerAbility playerAbility in player.CurrentSpecialization.Abilities)
-                    {
-                        if (playerAbility.IsCounter(bossAbility))
-                        {
-                            abilityCounters.Add(playerAbility);
-                        }
-                    }
-                }
-            }
+            //foreach (Player player in UserData.UserSelections.SelectedGroup.GetSelection().Players)
+            //{
+            //    if (player.CurrentSpecialization != null)
+            //    {
+            //        foreach (PlayerAbility playerAbility in player.CurrentSpecialization.Abilities)
+            //        {
+            //            if (playerAbility.IsCounter(bossAbility))
+            //            {
+            //                abilityCounters.Add(playerAbility);
+            //            }
+            //        }
+            //    }
+            //}
 
             return abilityCounters;
         }
 
         private bool BossLoaded()
         {
-            return (UserData.UserSelections.SelectedBoss != null);
+            return true; // (UserData.UserSelections.SelectedBoss != null);
         }
     }
 }

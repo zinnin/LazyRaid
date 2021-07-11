@@ -7,7 +7,7 @@ namespace LazyRaid.Models
         public string Name { get; set; }
         public int Cooldown { get; set; }
 
-        public OC<Counter> Counters { get; set; }
+        public OCReference<Counter> Counters { get; set; } = new OCReference<Counter>();
 
         public bool IsCounter(BossAbility bossAbility)
         {

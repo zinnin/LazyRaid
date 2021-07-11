@@ -2,7 +2,7 @@
 
 namespace LazyRaid.Models
 {
-    public class BossEvent
+    public class BossEvent : BindableReferenceBase
     {
         public BossTime Timestamp { get; set; }
         public BossAbility Ability { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Prism.Mvvm;
@@ -44,14 +45,14 @@ namespace LazyRaid.Models
         {
             // This is done like this because we need to control the load order of objects in order to preserve object references at runtime
             saveDictionary = new Dictionary<string, string>();
-            SaveField(Counters);
-            SaveField(PlayerAbilities);
-            SaveField(Specializations);
-            SaveField(Players);
-            SaveField(Groups);
-            SaveField(Bosses);
-            SaveField(Instances);
-            SaveField(UserSelections);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Counters), Counters);
+            SaveField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), PlayerAbilities);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Specializations), Specializations);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Players), Players);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Groups), Groups);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Bosses), Bosses);
+            SaveField(LazyRaidExtensions.GetMemberName(() => Instances), Instances);
+            SaveField(LazyRaidExtensions.GetMemberName(() => UserSelections), UserSelections);
 
             File.WriteAllText(fileName, JsonConvert.SerializeObject(saveDictionary));
             if (pendingSave)
@@ -83,31 +84,32 @@ namespace LazyRaid.Models
             }
 
             // Load Order Matters, objects that Ref need to have those Refs loaded first
-            LoadField(Counters, new OCLibrary<Counter>());
-            LoadField(PlayerAbilities, new OCLibrary<PlayerAbility>());
-            LoadField(Specializations, new OCLibrary<Specialization>());
-            LoadField(Players, new OCLibrary<Player>());
-            LoadField(Groups, new OCLibrary<Group>());
-            LoadField(Bosses, new OCLibrary<Boss>());
-            LoadField(Instances, new OCLibrary<Instance>());
-            LoadField(UserSelections, new UserSelections());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Counters), new OCLibrary<Counter>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), new OCLibrary<PlayerAbility>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Specializations), new OCLibrary<Specialization>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Players), new OCLibrary<Player>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Groups), new OCLibrary<Group>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Bosses), new OCLibrary<Boss>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Instances), new OCLibrary<Instance>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => UserSelections),  new UserSelections());
         }
 
-        private void SaveField(object field)
+        private void SaveField(string fieldName, object field)
         {
-            saveDictionary.Add(LazyRaidExtensions.GetMemberName(() => field), JsonConvert.SerializeObject(field));
+            saveDictionary.Add(fieldName, JsonConvert.SerializeObject(field, new LazyRaidJsonConverter(this)));
         }
 
-        private void LoadField<T>(T field, T loadFailureFallback)
+        private void LoadField<T>(string fieldName, T loadFailureFallback)
         {
-            string fieldName = LazyRaidExtensions.GetMemberName(() => field);
             if (saveDictionary.ContainsKey(fieldName))
             {
-                field = JsonConvert.DeserializeObject<T>(saveDictionary[fieldName], new LazyRaidJsonConverter(this));
+                PropertyInfo piInstance = typeof(UserData).GetProperty(fieldName);
+                piInstance.SetValue(this, JsonConvert.DeserializeObject<T>(saveDictionary[fieldName], new LazyRaidJsonConverter(this)));
             }
             else
             {
-                field = loadFailureFallback;
+                PropertyInfo piInstance = typeof(UserData).GetProperty(fieldName);
+                piInstance.SetValue(this, loadFailureFallback);
             }
         }
     }
