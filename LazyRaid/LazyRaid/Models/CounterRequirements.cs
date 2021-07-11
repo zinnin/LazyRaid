@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LazyRaid.Models
+﻿namespace LazyRaid.Models
 {
-    public class CounterRequirements
+    public enum MechanicCounterRequirmentType
     {
-
+        Player,
+        Ability,
+    }
+    
+    public class CounterRequirements : BindableReferenceBase
+    {
+        public MechanicCounterRequirmentType MechanicCounterType { get; set; }
+        public Reference<SpellEffect> RequiredEffect { get; set; } 
+        public int NumberNeeded { get; set; }
     }
 }

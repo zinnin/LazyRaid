@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LazyRaid.Models
+﻿namespace LazyRaid.Models
 {
     public class UserSelections
     {
@@ -12,6 +6,6 @@ namespace LazyRaid.Models
         //public Reference<Boss> SelectedBoss { get; set; } = new Reference<Boss>();
         //public Reference<BossEvent> SelectedEvent { get; set; } = new Reference<BossEvent>();
         //public Reference<Group> SelectedGroup { get; set; } = new Reference<Group>();
-        public Reference<Counter> SelectedCounter { get; set; } = new Reference<Counter>();
+        public Reference<SpellEffect> SelectedCounter { get; set; } = new Reference<SpellEffect>();
     }
 }

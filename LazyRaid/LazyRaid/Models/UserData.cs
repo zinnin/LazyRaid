@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -10,8 +9,8 @@ namespace LazyRaid.Models
 {
     public class UserData : BindableBase
     {
-        private OCLibrary<Counter> _counters;
-        public OCLibrary<Counter> Counters { get=> _counters; set => SetProperty(ref _counters, value); }
+        private OCLibrary<SpellEffect> _counters;
+        public OCLibrary<SpellEffect> Counters { get=> _counters; set => SetProperty(ref _counters, value); }
 
         private OCLibrary<PlayerAbility> _playerAbilities;
         public OCLibrary<PlayerAbility> PlayerAbilities { get => _playerAbilities; set => SetProperty(ref _playerAbilities, value); }
@@ -84,7 +83,7 @@ namespace LazyRaid.Models
             }
 
             // Load Order Matters, objects that Ref need to have those Refs loaded first
-            LoadField(LazyRaidExtensions.GetMemberName(() => Counters), new OCLibrary<Counter>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => Counters), new OCLibrary<SpellEffect>());
             LoadField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), new OCLibrary<PlayerAbility>());
             LoadField(LazyRaidExtensions.GetMemberName(() => Specializations), new OCLibrary<Specialization>());
             LoadField(LazyRaidExtensions.GetMemberName(() => Players), new OCLibrary<Player>());

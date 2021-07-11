@@ -3,7 +3,7 @@
     public class Player : BindableReferenceBase
     {
         public string Name { get; set; }
-        public Specialization CurrentSpecialization { get; set; }
-        public OC<Specialization> AvailableSpecializations { get; set; }
+        public Reference<Specialization> CurrentSpecialization { get; set; }
+        public OCReference<Specialization> AvailableSpecializations { get; set; } = new OCReference<Specialization>();
     }
 }

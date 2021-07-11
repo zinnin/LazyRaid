@@ -2,36 +2,27 @@
 {
     public class BossTime
     {
-        public int Minutes { get; set; }
-        public int Seconds { get; set; }
-
-        public BossTime()
-        {
-            Minutes = 0;
-            Seconds = 0;
-        }
+        public int Minutes { get; set; } = 0;
+        public int Seconds { get; set; } = 0;
 
         public BossTime(int minutes)
         {
-            Minutes = minutes;
-            Seconds = 0;
+            AddTime(minutes);
         }
 
         public BossTime(int minutes, int seconds)
         {
-            Minutes = minutes + (seconds / 60);
-            Seconds = seconds % 60;
+            AddTime(minutes, seconds);
         }
 
         public void AddSeconds(int seconds)
         {
-            Minutes += seconds / 60;
-            Seconds += seconds % 60;
+            AddTime(0, seconds);
         }
 
-        public void AddMinutes(int minute)
+        public void AddMinutes(int minutes)
         {
-            Minutes += minute;
+            AddTime(minutes);
         }
 
         public void AddTime(int minutes, int seconds = 0)

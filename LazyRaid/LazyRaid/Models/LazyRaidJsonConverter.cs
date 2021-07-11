@@ -36,7 +36,7 @@ namespace LazyRaid.Models
                 throw new Exception("Existing OCReference must be initialized before Deserialization");
             }
             
-            if (existingRefObj is OCReference<Counter> CountersRef)
+            if (existingRefObj is OCReference<SpellEffect> CountersRef)
             {
                 List<Guid> guides = JsonConvert.DeserializeObject<List<Guid>>(reader.Value.ToString());
                 foreach (Guid ID in guides)
@@ -44,7 +44,7 @@ namespace LazyRaid.Models
                     CountersRef.Add(userData.Counters.GetValue(ID));
                 }
             }
-            else if (existingRefObj is Reference<Counter> CounterRef)
+            else if (existingRefObj is Reference<SpellEffect> CounterRef)
             {
                 Guid guid = new Guid(reader.Value.ToString());
                 CounterRef.SetSelection(userData.Counters.GetValue(guid));

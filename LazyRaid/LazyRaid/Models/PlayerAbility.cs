@@ -6,8 +6,10 @@ namespace LazyRaid.Models
     {
         public string Name { get; set; }
         public int Cooldown { get; set; }
+        public bool IsExclusive { get; set; }
+        public int ExclusiveCooldown { get; set; }
 
-        public OCReference<Counter> Counters { get; set; } = new OCReference<Counter>();
+        public OCReference<SpellEffect> Counters { get; set; } = new OCReference<SpellEffect>();
 
         public bool IsCounter(BossAbility bossAbility)
         {

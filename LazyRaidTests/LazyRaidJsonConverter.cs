@@ -15,13 +15,13 @@ namespace LazyRaidTests
             UserData testUserData = new UserData();
             testUserData.LoadUserData("FileNameWillNeverExist");
             
-            Counter newCounter = new Counter
+            SpellEffect newCounter = new SpellEffect
             {
                 Name = "CounterName",
             };
             testUserData.UserSelections.SelectedCounter.SetSelection(newCounter);
 
-            Counter newCounter2 = new Counter
+            SpellEffect newCounter2 = new SpellEffect
             {
                 Name = "CounterName",
             };
@@ -32,7 +32,7 @@ namespace LazyRaidTests
             PlayerAbility newPlayerAbility = new PlayerAbility
             {
                 Name = "PlayerAbility",
-                Counters = new OCReference<Counter>
+                Counters = new OCReference<SpellEffect>
                 {
                     newCounter,
                     newCounter2,
@@ -49,7 +49,7 @@ namespace LazyRaidTests
 
             foreach (PlayerAbility ability in loadUserDataTest.PlayerAbilities)
             {
-                foreach (Counter counter in ability.Counters)
+                foreach (SpellEffect counter in ability.Counters)
                 {
                     counter.Name = "Renamed";
                 }
@@ -57,9 +57,9 @@ namespace LazyRaidTests
 
             foreach (PlayerAbility ability in loadUserDataTest.PlayerAbilities)
             {
-                foreach (Counter counter in ability.Counters)
+                foreach (SpellEffect counter in ability.Counters)
                 {
-                    foreach(Counter originalCounter in loadUserDataTest.Counters)
+                    foreach(SpellEffect originalCounter in loadUserDataTest.Counters)
                     {
                         Assert.AreEqual(originalCounter.Name, counter.Name);
                     }
