@@ -41,13 +41,13 @@ namespace LazyRaid.Models
                 List<Guid> guides = JsonConvert.DeserializeObject<List<Guid>>(reader.Value.ToString());
                 foreach (Guid ID in guides)
                 {
-                    CountersRef.Add(userData.Counters.GetValue(ID));
+                    CountersRef.Add(userData.SpellEffects.GetValue(ID));
                 }
             }
             else if (existingRefObj is Reference<SpellEffect> CounterRef)
             {
                 Guid guid = new Guid(reader.Value.ToString());
-                CounterRef.SetSelection(userData.Counters.GetValue(guid));
+                CounterRef.SetSelection(userData.SpellEffects.GetValue(guid));
             }
             else if (existingRefObj is OCReference<PlayerAbility> PlayerAbilitysRef)
             {

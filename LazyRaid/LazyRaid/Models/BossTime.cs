@@ -5,7 +5,7 @@
         public int Minutes { get; set; } = 0;
         public int Seconds { get; set; } = 0;
 
-        public BossTime(int minutes)
+        public BossTime(int minutes = 0)
         {
             AddTime(minutes);
         }

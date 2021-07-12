@@ -1,24 +1,77 @@
-﻿using System.Collections.Generic;
-
-namespace LazyRaid.Models
+﻿namespace LazyRaid.Models
 {
+    public enum EffectTargetingType
+    {
+        Personal,
+        External,
+        RaidWide,
+        RaidWideStacked,
+        TargetCapped,
+    }
+
     public class PlayerAbility : BindableReferenceBase
     {
-        public string Name { get; set; }
-        public int Cooldown { get; set; }
-        public bool IsExclusive { get; set; }
-        public int ExclusiveCooldown { get; set; }
+        public string Name { get; set; } = "New Player Ability";
+        public int Cooldown { get; set; } = 0;
+        public EffectTargetingType TargetingType { get; set; } = EffectTargetingType.Personal;
 
-        public OCReference<SpellEffect> Counters { get; set; } = new OCReference<SpellEffect>();
+        public bool IsExclusive { get; set; } = false;
+        public int ExclusiveCooldown { get; set; } = 0;
 
-        public bool IsCounter(BossAbility bossAbility)
+        public OCReference<SpellEffect> SpellEffects { get; set; } = new OCReference<SpellEffect>();
+
+        public PlayerAbility()
         {
-            return true;
+
         }
 
-        public bool IsCounter(BossEvent bossEvent)
+        public PlayerAbility(string name, int cooldown, EffectTargetingType targetType, bool isExlusive, int exclusiveCooldown, SpellEffect spellEffects)
         {
-            return true;
+            Name = name;
+            Cooldown = cooldown;
+            TargetingType = targetType;
+            IsExclusive = isExlusive;
+            ExclusiveCooldown = exclusiveCooldown;
+            SpellEffects.Add(spellEffects);
+
+        }
+
+        public PlayerAbility(string name, int cooldown, EffectTargetingType targetType, bool isExlusive, int exclusiveCooldown, SpellEffect[] spellEffects)
+        {
+            Name = name;
+            Cooldown = cooldown;
+            TargetingType = targetType;
+            IsExclusive = isExlusive;
+            ExclusiveCooldown = exclusiveCooldown;
+            if (spellEffects != null)
+            {
+                foreach (SpellEffect effect in spellEffects)
+                {
+                    SpellEffects.Add(effect);
+                }
+            }
+        }
+
+        public PlayerAbility(string name, int cooldown, EffectTargetingType targetType, SpellEffect spellEffects)
+        {
+            Name = name;
+            Cooldown = cooldown;
+            TargetingType = targetType;
+            SpellEffects.Add(spellEffects);
+        }
+
+        public PlayerAbility(string name, int cooldown, EffectTargetingType targetType, SpellEffect[] spellEffects)
+        {
+            Name = name;
+            Cooldown = cooldown;
+            TargetingType = targetType;
+            if (spellEffects != null)
+            {
+                foreach (SpellEffect effect in spellEffects)
+                {
+                    SpellEffects.Add(effect);
+                }
+            }
         }
     }
 }

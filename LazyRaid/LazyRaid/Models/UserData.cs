@@ -9,8 +9,8 @@ namespace LazyRaid.Models
 {
     public class UserData : BindableBase
     {
-        private OCLibrary<SpellEffect> _counters;
-        public OCLibrary<SpellEffect> Counters { get=> _counters; set => SetProperty(ref _counters, value); }
+        private OCLibrary<SpellEffect> _spellEffects;
+        public OCLibrary<SpellEffect> SpellEffects { get=> _spellEffects; set => SetProperty(ref _spellEffects, value); }
 
         private OCLibrary<PlayerAbility> _playerAbilities;
         public OCLibrary<PlayerAbility> PlayerAbilities { get => _playerAbilities; set => SetProperty(ref _playerAbilities, value); }
@@ -44,7 +44,7 @@ namespace LazyRaid.Models
         {
             // This is done like this because we need to control the load order of objects in order to preserve object references at runtime
             saveDictionary = new Dictionary<string, string>();
-            SaveField(LazyRaidExtensions.GetMemberName(() => Counters), Counters);
+            SaveField(LazyRaidExtensions.GetMemberName(() => SpellEffects), SpellEffects);
             SaveField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), PlayerAbilities);
             SaveField(LazyRaidExtensions.GetMemberName(() => Specializations), Specializations);
             SaveField(LazyRaidExtensions.GetMemberName(() => Players), Players);
@@ -81,11 +81,12 @@ namespace LazyRaid.Models
                 saveDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(fileName));
                 
             }
+            UserDataDefaults defaults = new UserDataDefaults();
 
             // Load Order Matters, objects that Ref need to have those Refs loaded first
-            LoadField(LazyRaidExtensions.GetMemberName(() => Counters), new OCLibrary<SpellEffect>());
-            LoadField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), new OCLibrary<PlayerAbility>());
-            LoadField(LazyRaidExtensions.GetMemberName(() => Specializations), new OCLibrary<Specialization>());
+            LoadField(LazyRaidExtensions.GetMemberName(() => SpellEffects), defaults.GetDefaultData(new OCLibrary<SpellEffect>()));
+            LoadField(LazyRaidExtensions.GetMemberName(() => PlayerAbilities), defaults.GetDefaultData(new OCLibrary<PlayerAbility>()));
+            LoadField(LazyRaidExtensions.GetMemberName(() => Specializations), defaults.GetDefaultData(new OCLibrary<Specialization>()));
             LoadField(LazyRaidExtensions.GetMemberName(() => Players), new OCLibrary<Player>());
             LoadField(LazyRaidExtensions.GetMemberName(() => Groups), new OCLibrary<Group>());
             LoadField(LazyRaidExtensions.GetMemberName(() => Bosses), new OCLibrary<Boss>());

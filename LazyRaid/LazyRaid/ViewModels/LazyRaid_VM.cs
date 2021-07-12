@@ -39,7 +39,6 @@ namespace LazyRaid
         public LazyRaid_VM()
         {
             CreateCommands();
-            TestTemplates();
         }
 
         private void CreateCommands()
@@ -79,15 +78,19 @@ namespace LazyRaid
            
         }
 
-        private void TestTemplates()
+        public void CreateSpellEffect()
         {
+            UserData.SpellEffects.Add(new SpellEffect { Name = "New Spell Effect" });
+        }
 
+        public void DeleteSpellEffect(SpellEffect effectToRemove)
+        {
+            UserData.SpellEffects.Remove(effectToRemove);
         }
 
         private Task AutoSchedulerTask { get; set; }
         public BossTime FirstPassScheduleTimeStamp { get; set; } = new BossTime();
         public bool ReverseAutoSchedulers { get; set; }
-        public BossSchedulerSettings Settings { get; set; }
 
         public async Task RunAutoScheduler()
         {

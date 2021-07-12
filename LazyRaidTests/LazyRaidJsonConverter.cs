@@ -26,13 +26,13 @@ namespace LazyRaidTests
                 Name = "CounterName",
             };
 
-            testUserData.Counters.Add(newCounter);
-            testUserData.Counters.Add(newCounter2);
+            testUserData.SpellEffects.Add(newCounter);
+            testUserData.SpellEffects.Add(newCounter2);
 
             PlayerAbility newPlayerAbility = new PlayerAbility
             {
                 Name = "PlayerAbility",
-                Counters = new OCReference<SpellEffect>
+                SpellEffects = new OCReference<SpellEffect>
                 {
                     newCounter,
                     newCounter2,
@@ -49,7 +49,7 @@ namespace LazyRaidTests
 
             foreach (PlayerAbility ability in loadUserDataTest.PlayerAbilities)
             {
-                foreach (SpellEffect counter in ability.Counters)
+                foreach (SpellEffect counter in ability.SpellEffects)
                 {
                     counter.Name = "Renamed";
                 }
@@ -57,9 +57,9 @@ namespace LazyRaidTests
 
             foreach (PlayerAbility ability in loadUserDataTest.PlayerAbilities)
             {
-                foreach (SpellEffect counter in ability.Counters)
+                foreach (SpellEffect counter in ability.SpellEffects)
                 {
-                    foreach(SpellEffect originalCounter in loadUserDataTest.Counters)
+                    foreach(SpellEffect originalCounter in loadUserDataTest.SpellEffects)
                     {
                         Assert.AreEqual(originalCounter.Name, counter.Name);
                     }
